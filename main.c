@@ -3,12 +3,10 @@
 
 int main(void)
 {
-    float width = 800, height = 800;
+    float width = 800, height = 800, vertShift, horizShift;
     InitWindow(width, height, "Xgraph");
     Font roboto = LoadFont("assets/Roboto-Regular.ttf");
-    Vector2 origin;
-    Vector2 *line;
-    float vertShift, horizShift;
+    Vector2 origin, *line;
     int count;
 
     while (!WindowShouldClose())
@@ -24,8 +22,9 @@ int main(void)
         count = 0;
         for(int i = -vertShift; i < vertShift; i++)
         {
-            (line + count)->y = i+horizShift ;
-            (line + count)->x = i*i + vertShift;
+            (line + count)->x = (float) i + vertShift;
+            (line + count)->y = (float) -(i * i) + horizShift;
+            // (line + count)->y = (float) ((i * i * i) + (i * i) - (21 * i) + 45 + horizShift);
             count++;
         }
 
